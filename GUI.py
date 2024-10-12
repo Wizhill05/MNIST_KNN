@@ -167,7 +167,6 @@ class DrawingApp(ctk.CTk):
                 buttons_frame.pack(pady=10)
 
                 buttons = []
-
                 for i in range(10):
                     button = ctk.CTkButton(
                         buttons_frame,
