@@ -1,4 +1,2 @@
 knn_mnist_model.joblib
-predictions/*
-images/*
 __pycache__
