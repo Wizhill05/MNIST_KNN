@@ -51,7 +51,7 @@ def train():
     X_test = test_images.reshape(test_images.shape[0], -1)
     y_test = test_labels
 
-    knn = KNeighborsClassifier(n_neighbors=245)
+    knn = KNeighborsClassifier(n_neighbors=21)
     knn.fit(X_train, y_train)
 
     y_pred = knn.predict(X_test)
@@ -67,6 +67,3 @@ def train():
         + "\n"
         + classification_report(y_test, y_pred)
     )
-
-
-print(train())

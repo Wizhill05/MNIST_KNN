@@ -53,9 +53,3 @@ def process_images(image_dir, json_path, csv_path):
         print(f"Data successfully written to {csv_path}")
     else:
         print("No data to write to CSV.")
-
-
-image_directory = "predictions/"
-json_file_path = "new_data.json"
-output_csv_path = "externals.csv"
-process_images(image_directory, json_file_path, output_csv_path)

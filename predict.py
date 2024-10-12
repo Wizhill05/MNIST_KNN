@@ -14,14 +14,13 @@ def preprocess_image(image_path):
     return img_array
 
 
-model_filename = "knn_mnist_model.joblib"
-model = joblib.load(model_filename)
+def predict_using_images():
+    model_filename = "knn_mnist_model.joblib"
+    knn = joblib.load(model_filename)
 
-image_dir = r"images/"
-destination_dir = r"predictions/"
+    image_dir = r"images/"
+    destination_dir = r"predictions/"
 
-
-def predict_using_images(knn):
     try:
         image_files = [
             f for f in os.listdir(image_dir) if f.endswith((".png", ".jpg", ".jpeg"))
@@ -52,7 +51,13 @@ def predict_using_images(knn):
         return []
 
 
-def predict_from_grayscale_image(image_2d, knn):
+def predict_from_grayscale_image(image_2d):
+    model_filename = "knn_mnist_model.joblib"
+    knn = joblib.load(model_filename)
+
+    image_dir = r"images/"
+    destination_dir = r"predictions/"
+
     try:
         image_array = np.array(image_2d).flatten().reshape(1, -1)
         prediction = knn.predict(image_array)[0]
@@ -67,11 +72,3 @@ def predict_from_grayscale_image(image_2d, knn):
     except ValueError as e:
         print(f"Error during prediction: {e}")
         return []
-
-
-print(predict_using_images(model))
-
-image_2d = [[i + j for j in range(28)] for i in range(28)]
-image_2d = [[min(255, value) for value in row] for row in image_2d]
-
-print(predict_from_grayscale_image(image_2d, model))
