@@ -1,3 +1,4 @@
+import os
 import customtkinter as ctk
 from tkinter import Canvas, Toplevel
 from PIL import Image, ImageGrab
@@ -107,6 +108,7 @@ class DrawingApp(ctk.CTk):
         img = ImageGrab.grab().crop((x0, y0, x1, y1))
         img = img.resize((28, 28))
         now = time.time()
+        os.makedirs("images/", exist_ok=True)
         img.save(f"images\\{now}.png")
         result = predict_using_images()
         self.display_results(result)
